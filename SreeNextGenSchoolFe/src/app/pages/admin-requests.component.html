@@ -1,0 +1,103 @@
+<div class="admin-panel">
+  <div class="panel-header">
+    <div>
+      <p class="panel-kicker">Requests overview</p>
+      <h3>{{ pageSummary }}</h3>
+    </div>
+
+    <div class="panel-meta">
+      <span class="meta-chip">Total: {{ filteredRequests.length }}</span>
+      <span class="meta-chip">Page {{ currentPage }} of {{ totalPages }}</span>
+    </div>
+  </div>
+
+  <div class="admin-actions">
+    <label class="filter-control">
+      <span>Status Filter</span>
+      <select class="status-filter-select" [ngModel]="selectedStatusFilter" (ngModelChange)="onStatusFilterChange($event)">
+        @for (status of requestStatusFilterOptions; track status) {
+          <option [value]="status">{{ status }}</option>
+        }
+      </select>
+    </label>
+    <button class="ghost-btn" type="button" (click)="logout()">Logout</button>
+  </div>
+
+  @if (loading) {
+    <p>Loading requests...</p>
+  }
+
+  @if (errorMessage) {
+    <div class="status error">{{ errorMessage }}</div>
+  }
+
+  @if (!loading && !errorMessage) {
+    @if (paginatedRequests.length) {
+      <div class="table-wrap">
+        <table class="request-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Parent</th>
+              <th>Phone / WhatsApp</th>
+              <th>Class</th>
+              <th>Status</th>
+              <th>Change Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (request of paginatedRequests; track request.id) {
+              <tr>
+                <td>
+                  <strong>{{ request.studentName }}</strong>
+                  @if (request.message) {
+                    <p class="message">{{ request.message }}</p>
+                  }
+                  @if (request.additionalChildren.length) {
+                    <div class="additional-children">
+                      <p class="children-title">Additional Children</p>
+                      @for (child of request.additionalChildren; track $index) {
+                        <p>Child {{ $index + 2 }}: {{ child.studentName }} - {{ child.classApplyingFor }}</p>
+                      }
+                    </div>
+                  }
+                </td>
+                <td>{{ request.parentName }}</td>
+                <td>{{ request.phoneWhatsApp }}</td>
+                <td>{{ request.classApplyingFor }}</td>
+                <td>
+                  <span class="status-pill" [attr.data-status]="request.status">{{ request.status }}</span>
+                </td>
+                <td>
+                  <select
+                    class="status-select"
+                    [value]="request.status"
+                    [disabled]="savingId === request.id"
+                    #statusSelect
+                    (change)="updateStatus(request, statusSelect.value)"
+                  >
+                    @for (status of requestStatusOptions; track status) {
+                      <option [value]="status">{{ status }}</option>
+                    }
+                  </select>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-bar">
+        <button class="ghost-btn pagination-btn" type="button" (click)="previousPage()" [disabled]="currentPage === 1">
+          Previous
+        </button>
+        <span class="pagination-copy">Showing {{ pageSummary }}</span>
+        <button class="ghost-btn pagination-btn" type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    } @else {
+      <p>No requests found for the selected status.</p>
+    }
+  }
+</div>

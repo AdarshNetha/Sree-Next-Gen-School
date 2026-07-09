@@ -1,0 +1,14 @@
+.agents
+.git
+.github
+.vscode
+node_modules
+.angular
+dist
+target
+logs
+tmp
+temp
+README.md
+APP_OVERVIEW.md
+*.log

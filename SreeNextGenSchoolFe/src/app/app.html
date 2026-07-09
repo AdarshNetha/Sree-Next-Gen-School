@@ -1,0 +1,92 @@
+<div class="site-shell">
+  @if (!isAdminRoute) {
+    <header class="topbar">
+      <a class="brand" routerLink="/">
+        <img class="brand-logo" src="/assets/banner.jpeg" alt="Sree Next Gen School banner" />
+        <span>
+          <strong>Sree Next Gen School</strong>
+          <small>Mancherial, Telangana</small>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        [attr.aria-expanded]="mobileNavOpen"
+        (click)="toggleMobileNav()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/about-us" routerLinkActive="active">About Us</a>
+        <a routerLink="/academics" routerLinkActive="active">Academics</a>
+        <a routerLink="/facilities" routerLinkActive="active">Facilities</a>
+        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        <a routerLink="/request-admission" routerLinkActive="active">Request Admission</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="ghost-btn" routerLink="/admin/login">Admin Login</a>
+        <a class="primary-btn" href="tel:+918886877723">Call Now</a>
+      </div>
+    </header>
+
+    @if (mobileNavOpen) {
+      <button class="nav-overlay" type="button" aria-label="Close navigation menu" (click)="closeMobileNav()"></button>
+    }
+
+    <aside class="mobile-drawer" [class.open]="mobileNavOpen" aria-label="Mobile navigation">
+      <div class="drawer-header">
+        <strong>Menu</strong>
+        <button class="drawer-close" type="button" aria-label="Close navigation menu" (click)="closeMobileNav()">Close</button>
+      </div>
+
+      <nav class="drawer-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileNav()">Home</a>
+        <a routerLink="/about-us" routerLinkActive="active" (click)="closeMobileNav()">About Us</a>
+        <a routerLink="/academics" routerLinkActive="active" (click)="closeMobileNav()">Academics</a>
+        <a routerLink="/facilities" routerLinkActive="active" (click)="closeMobileNav()">Facilities</a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileNav()">Contact</a>
+        <a routerLink="/request-admission" routerLinkActive="active" (click)="closeMobileNav()">Request Admission</a>
+        <a routerLink="/admin/login" class="drawer-ghost" (click)="closeMobileNav()">Admin Login</a>
+        <a class="drawer-primary" href="tel:+918886877723" (click)="closeMobileNav()">Call Now</a>
+      </nav>
+    </aside>
+  }
+
+  <main class="content-wrap">
+    <router-outlet></router-outlet>
+
+    @if (hasPager) {
+      <section class="page-pager" aria-label="Page navigation">
+        <a
+          class="pager-button pager-secondary"
+          [class.is-disabled]="!previousPage"
+          [attr.aria-disabled]="!previousPage"
+          [routerLink]="previousPage?.path ?? currentRoute"
+        >
+          Previous
+        </a>
+
+        <div class="pager-center">
+          <span class="pager-label">Browse pages</span>
+          <strong>{{ publicPageRoutes[currentPageIndex].label }}</strong>
+        </div>
+
+        <a
+          class="pager-button pager-primary"
+          [class.is-disabled]="!nextPage"
+          [attr.aria-disabled]="!nextPage"
+          [routerLink]="nextPage?.path ?? currentRoute"
+        >
+          Next
+        </a>
+      </section>
+    }
+  </main>
+</div>

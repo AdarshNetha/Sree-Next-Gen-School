@@ -1,0 +1,254 @@
+.admin-panel {
+  padding: 0.25rem 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.panel-kicker {
+  margin: 0 0 0.35rem;
+  color: #1d4ed8;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.panel-header h3 {
+  margin: 0;
+  color: #243043;
+  font-size: 1.15rem;
+}
+
+.panel-meta {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(38, 55, 77, 0.1);
+  color: #4b596d;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(38, 55, 77, 0.1);
+  color: #425066;
+  font-weight: 700;
+}
+
+.filter-control span {
+  white-space: nowrap;
+}
+
+.status-filter-select {
+  min-width: 220px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+.ghost-btn,
+.pagination-btn,
+.status-select,
+.status-filter-select {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.ghost-btn:hover,
+.pagination-btn:hover,
+.status-select:hover,
+.status-filter-select:hover {
+  transform: translateY(-1px);
+}
+
+.ghost-btn:disabled,
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(36, 48, 67, 0.08);
+}
+
+.request-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(38, 55, 77, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.request-table th,
+.request-table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(38, 55, 77, 0.08);
+}
+
+.request-table th {
+  background: linear-gradient(180deg, rgba(239, 246, 255, 0.98), rgba(226, 240, 255, 0.96));
+  color: #23395d;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.request-table tbody tr {
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.request-table tbody tr:hover {
+  background: rgba(219, 234, 254, 0.45);
+  transform: translateY(-1px);
+}
+
+.request-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.request-table p {
+  margin: 0.25rem 0;
+  color: #4b596d;
+}
+
+.status-pill {
+  display: inline-flex;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-weight: 700;
+}
+
+.status-pill[data-status='REQUESTED_FOR_ADMISSION'] {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.status-pill[data-status='CONFIRM_ADMISSION'] {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status-pill[data-status='CONTACTED_PARENTS'] {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.status-pill[data-status='WAITING_FOR_RESPONSE'] {
+  background: #fefce8;
+  color: #a16207;
+}
+
+.status-pill[data-status='CONFIRMED'] {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status-select {
+  width: 100%;
+  max-width: 240px;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  background: #ffffff;
+  color: #243043;
+  font: inherit;
+}
+
+.additional-children {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.children-title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+}
+
+.status.error {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(38, 55, 77, 0.08);
+}
+
+.pagination-copy {
+  color: #4b596d;
+  font-weight: 700;
+}
+
+.pagination-btn {
+  min-width: 110px;
+}
+
+@media (max-width: 820px) {
+  .panel-header,
+  .pagination-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-control,
+  .status-filter-select,
+  .status-select,
+  .pagination-btn {
+    width: 100%;
+    max-width: none;
+  }
+}

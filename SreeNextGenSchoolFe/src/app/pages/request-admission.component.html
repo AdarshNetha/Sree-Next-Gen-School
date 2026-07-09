@@ -1,0 +1,95 @@
+<section class="page-card request-card">
+  <p class="eyebrow">Request Admission</p>
+  <h2>Parents can submit request details here.</h2>
+  <p class="subcopy">Admissions are open for Play School through Class 7. We will respond within 24 hours.</p>
+
+  @if (successMessage) {
+    <div class="status success">{{ successMessage }}</div>
+  }
+
+  @if (errorMessage) {
+    <div class="status error">{{ errorMessage }}</div>
+  }
+
+  <form class="request-form" [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Child 1 Name
+      <input type="text" formControlName="studentName" />
+    </label>
+
+    <label>
+      Parent's Name
+      <input type="text" formControlName="parentName" />
+    </label>
+
+    <label>
+      Phone / WhatsApp
+      <input type="tel" formControlName="phoneWhatsApp" />
+    </label>
+
+    <label>
+      Child 1 Class Applying For
+      <select formControlName="classApplyingFor">
+        <option value="" disabled>Select class</option>
+        <option>Play School (Pre-Nursery)</option>
+        <option>Nursery</option>
+        <option>LKG</option>
+        <option>UKG</option>
+        <option>Class 1</option>
+        <option>Class 2</option>
+        <option>Class 3</option>
+        <option>Class 4</option>
+        <option>Class 5</option>
+        <option>Class 6</option>
+        <option>Class 7</option>
+      </select>
+    </label>
+
+    <label>
+      Message (Optional)
+      <textarea rows="4" formControlName="message"></textarea>
+    </label>
+
+    <div class="children-stack" formArrayName="additionalChildren">
+      @for (child of additionalChildren.controls; track $index) {
+        <div class="child-card" [formGroupName]="$index">
+          <div class="child-card-head">
+            <h3>Child {{ $index + 2 }}</h3>
+            <button class="ghost-btn small-btn" type="button" (click)="removeChild($index)">Remove</button>
+          </div>
+
+          <label>
+            Child {{ $index + 2 }} Name
+            <input type="text" formControlName="studentName" />
+          </label>
+
+          <label>
+            Child {{ $index + 2 }} Class Applying For
+            <select formControlName="classApplyingFor">
+              <option value="" disabled>Select class</option>
+              <option>Play School (Pre-Nursery)</option>
+              <option>Nursery</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>Class 1</option>
+              <option>Class 2</option>
+              <option>Class 3</option>
+              <option>Class 4</option>
+              <option>Class 5</option>
+              <option>Class 6</option>
+              <option>Class 7</option>
+            </select>
+          </label>
+        </div>
+      }
+    </div>
+
+    <button class="ghost-btn add-child-btn" type="button" (click)="addNextChild()">
+      Add Next Child
+    </button>
+
+    <button class="primary-btn submit-btn" type="submit" [disabled]="form.invalid || submitting">
+      {{ submitting ? 'Submitting...' : 'Submit Enquiry' }}
+    </button>
+  </form>
+</section>

@@ -1,0 +1,41 @@
+.auth-card {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.request-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.request-form label {
+  display: grid;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: #344255;
+}
+
+.request-form input {
+  border: 1px solid rgba(38, 55, 77, 0.16);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  background: #fff;
+}
+
+.status {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.status.error {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.submit-btn {
+  justify-self: start;
+}

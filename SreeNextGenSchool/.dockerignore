@@ -1,0 +1,14 @@
+.git
+.vscode
+node_modules
+dist
+.angular
+target
+logs
+*.log
+tmp
+temp
+.git
+.idea
+.vscode
+*.iml
