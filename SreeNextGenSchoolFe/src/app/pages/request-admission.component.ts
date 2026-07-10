@@ -20,6 +20,8 @@ type BackendErrorResponse = {
   styleUrl: './request-admission.component.scss',
 })
 export class RequestAdmissionComponent {
+  private readonly phoneWhatsAppPattern = /^[6-9]\d{9}$/;
+
   submitted = false;
   submitting = false;
   errorMessage = '';
@@ -28,7 +30,7 @@ export class RequestAdmissionComponent {
   form = new FormBuilder().group({
     studentName: ['', [Validators.required]],
     parentName: ['', [Validators.required]],
-    phoneWhatsApp: ['', [Validators.required]],
+    phoneWhatsApp: ['', [Validators.required, Validators.pattern(this.phoneWhatsAppPattern)]],
     classApplyingFor: ['', [Validators.required]],
     message: [''],
     additionalChildren: new FormArray([]),
@@ -41,6 +43,11 @@ export class RequestAdmissionComponent {
 
   get additionalChildren(): FormArray {
     return this.form.get('additionalChildren') as FormArray;
+  }
+
+  get phoneWhatsAppInvalid(): boolean {
+    const control = this.form.controls.phoneWhatsApp;
+    return control.invalid && (control.dirty || control.touched);
   }
 
   addNextChild(): void {
@@ -58,6 +65,7 @@ export class RequestAdmissionComponent {
 
   async submit(): Promise<void> {
     if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
 

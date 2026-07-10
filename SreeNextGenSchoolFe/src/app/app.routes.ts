@@ -5,7 +5,7 @@ import { AcademicsComponent } from './pages/academics.component';
 import { FacilitiesComponent } from './pages/facilities.component';
 import { ContactComponent } from './pages/contact.component';
 import { RequestAdmissionComponent } from './pages/request-admission.component';
-import { AdminLoginComponent } from './pages/admin-login.component';
+import { AdminAccessComponent } from './pages/admin-access.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard.component';
 import { adminAuthGuard } from './core/admin-auth.guard';
 
@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'facilities', component: FacilitiesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'request-admission', component: RequestAdmissionComponent },
-  { path: 'admin/login', component: AdminLoginComponent },
+  { path: 'admin/login', component: AdminAccessComponent },
   {
     path: 'admin',
     component: AdminDashboardComponent,

@@ -24,7 +24,16 @@
 
     <label>
       Phone / WhatsApp
-      <input type="tel" formControlName="phoneWhatsApp" />
+      <input
+        type="tel"
+        formControlName="phoneWhatsApp"
+        inputmode="numeric"
+        maxlength="10"
+        pattern="[6-9][0-9]{9}"
+      />
+      @if (phoneWhatsAppInvalid) {
+        <span class="field-error">Phone / WhatsApp must be 10 digits and start with 6, 7, 8, or 9.</span>
+      }
     </label>
 
     <label>
